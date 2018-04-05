@@ -31,13 +31,20 @@
       "repeatable": false,
       "subfields": {
         "a": {
-          "mandatory": true,
+          "repeatable": false
+        },
+        "b": {
           "repeatable": false
         },
         "c": {
-          "mandatory": false,
           "repeatable": false
-        }
+        },
+        "d": {},
+        "e": {},
+        "6": {
+          "repeatable": false
+        },
+        "8": {}
       }
     },
     "100":{
