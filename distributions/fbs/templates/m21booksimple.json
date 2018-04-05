@@ -23,7 +23,8 @@
     "001": {
       "mandatory": true,
       "repeatable": false
-    },
+    }
+  },
   "fields": {
     "040": {
       "url": "https://www.loc.gov/marc/bibliographic/bd040.html",
@@ -54,7 +55,42 @@
         "a": {
           "mandatory": true,
           "repeatable": false
-        }
+        },
+        "b": {
+          "repeatable": false
+        },
+        "c": {},
+        "d":  {
+          "repeatable": false
+        },
+        "e": {},
+        "f":  {
+          "repeatable": false
+        },
+        "g": {},
+        "j": {},
+        "k": {},
+        "l": {},
+        "n": {},
+        "p": {},
+        "q":  {
+          "repeatable": false
+        },
+        "t":  {
+          "repeatable": false
+        },
+        "u":  {
+          "repeatable": false
+        },
+        "0": {},
+        "1":  {
+          "repeatable": false
+        },
+        "4": {},
+        "6":  {
+          "repeatable": false
+        },
+        "8": {}
       }
     },
     "245":{
