@@ -103,13 +103,30 @@
           "repeatable": false
         },
         "b": {
-          "mandatory": false,
           "repeatable": false
         },
         "c": {
           "mandatory": true,
           "repeatable": false
-        }
+        },
+        "f": {
+          "repeatable": false
+        },
+        "g": {
+          "repeatable": false
+        },
+        "h": {
+          "repeatable": false
+        },
+        "n": {},
+        "p": {},
+        "s": {
+          "repeatable": false
+        },
+        "6": {
+          "repeatable": false
+        },
+        "8": {}
       }
     },
     "260": {
