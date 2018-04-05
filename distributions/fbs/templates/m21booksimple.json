@@ -1,6 +1,6 @@
 {
   "template": {
-    "description":"Skabelon til oprettelse af lokal marc21 bogpost - controlfield er lige nu sat til repeatable false trods at 006 og 007 kan gentages. Men det er lavet ud fra minimal level book",
+    "description":"Skabelon til oprettelse af lokal marc21 bogpost - den simple version som ikke håndterer leader, alle kontrolfelter (kun 001) og indikatorer endnu",
     "features": [ "all" ]
   },
 
