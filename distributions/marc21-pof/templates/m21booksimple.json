@@ -1,0 +1,98 @@
+{
+  "template": {
+    "description":"Skabelon til oprettelse af lokal marc21 bogpost - controlfield er lige nu sat til repeatable false trods at 006 og 007 kan gentages. Men det er lavet ud fra minimal level book",
+    "features": [ "all" ]
+  },
+
+  "defaults": {
+    "field":{
+      "indicator":"  ",
+      "mandatory":false,
+      "repeatable":true
+    },
+    "subfield":{
+      "mandatory":false,
+      "repeatable":true
+    }
+  },
+  "fields": {
+    "040": {
+      "url": "https://www.loc.gov/marc/bibliographic/bd040.html",
+      "mandatory": true,
+      "repeatable": false,
+      "subfields": {
+        "a": {
+          "mandatory": true,
+          "repeatable": false
+        },
+        "c": {
+          "mandatory": false,
+          "repeatable": false
+        }
+      }
+    },
+    "100":{
+      "url":"https://www.loc.gov/marc/bibliographic/bd100.html",
+      "repeatable": false,
+      "subfields":{
+        "a": {
+          "mandatory": true,
+          "repeatable": false
+        }
+      }
+    },
+    "245":{
+      "url":"https://www.loc.gov/marc/bibliographic/bd245.html",
+      "mandatory":true,
+      "repeatable":false,
+      "subfields":{
+        "a": {
+          "mandatory": true,
+          "repeatable": false
+        },
+        "b": {
+          "mandatory": false,
+          "repeatable": false
+        },
+        "c": {
+          "mandatory": true,
+          "repeatable": false
+        }
+      }
+    },
+    "260": {
+      "url":"https://www.loc.gov/marc/bibliographic/bd260.html",
+      "mandatory":false,
+      "repeatable":true,
+      "subfields":{
+        "a": {
+          "mandatory": false,
+          "repeatable": true
+        },
+        "b": {
+          "mandatory": false,
+          "repeatable": true
+        },
+        "c": {
+          "mandatory": false,
+          "repeatable": true
+        }
+      }
+    },
+    "300": {
+      "url":"https://www.loc.gov/marc/bibliographic/bd300.html",
+      "mandatory":false,
+      "repeatable":true,
+      "subfields":{
+        "a": {
+          "mandatory": false,
+          "repeatable": true
+        },
+        "c": {
+          "mandatory": false,
+          "repeatable": true
+        }
+      }
+    }
+  }
+}
