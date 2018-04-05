@@ -5,6 +5,10 @@
   },
 
   "defaults": {
+    "controlfield":{
+      "mandatory":false,
+      "repeatable":true
+    },
     "field":{
       "indicator":"  ",
       "mandatory":false,
@@ -15,6 +19,11 @@
       "repeatable":true
     }
   },
+  "controlfields": {
+    "001": {
+      "mandatory": true,
+      "repeatable": false
+    },
   "fields": {
     "040": {
       "url": "https://www.loc.gov/marc/bibliographic/bd040.html",
