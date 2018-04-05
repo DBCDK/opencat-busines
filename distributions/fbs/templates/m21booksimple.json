@@ -154,14 +154,24 @@
       "mandatory":false,
       "repeatable":true,
       "subfields":{
-        "a": {
-          "mandatory": false,
-          "repeatable": true
+        "a": {},
+        "b": {
+          "repeatable": false
         },
-        "c": {
-          "mandatory": false,
-          "repeatable": true
-        }
+        "c": {},
+        "e": {
+          "repeatable": false
+        },
+        "f": {},
+        "g": {},
+        "3": {
+          "repeatable": false
+        },
+        "6": {
+          "repeatable": false
+        },
+        "8": {}
+      }
       }
     }
   }
