@@ -6,7 +6,8 @@
     "ffu":                  {"templateGroups": ["FFU"]},
     "lokbib":               {"templateGroups": ["Lokalbibliografi"]},
     "ph":                   {"templateGroups": ["PH"]},
-    "skole":                {"templateGroups": ["FBS", "Skolepaahaengsposter (p.t. ikke synlige i drift)"]}
+    "skole":                {"templateGroups": ["FBS", "Skolepaahaengsposter (p.t. ikke synlige i drift)"]},
+    "m21_udland":           {"templateGroups": ["MARC21_TEMPLATES"]}
   },
   "templateGroups": {
     "DBC": {
@@ -167,6 +168,13 @@
         "skolepaahaengspostbind",
         "skolepaahaengsposthoved",
         "skolepaahaengspostsektion"
+      ],
+      "folder": "fbs"
+    },
+    "MARC21_TEMPLATES": {
+      "templates": [
+        "m21book",
+        "m21booksimple"
       ],
       "folder": "fbs"
     }
