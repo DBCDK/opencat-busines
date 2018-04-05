@@ -134,18 +134,19 @@
       "mandatory":false,
       "repeatable":true,
       "subfields":{
-        "a": {
-          "mandatory": false,
-          "repeatable": true
+        "a": {},
+        "b": {},
+        "c": {},
+        "e": {},
+        "f": {},
+        "g": {},
+        "3": {
+          "repeatable": false
         },
-        "b": {
-          "mandatory": false,
-          "repeatable": true
+        "6": {
+          "repeatable": false
         },
-        "c": {
-          "mandatory": false,
-          "repeatable": true
-        }
+        "8": {}
       }
     },
     "300": {
