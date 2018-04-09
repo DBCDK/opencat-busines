@@ -5,6 +5,10 @@
   },
 
   "defaults": {
+    "leader": {
+      "mandatory": true,
+      "repeatable": false
+    },
     "controlfield":{
       "mandatory":false,
       "repeatable":true
@@ -19,10 +23,79 @@
       "repeatable":true
     }
   },
+  "leader": {
+    "length": 24,
+    "pos00": regelOmAtDetSkalVæreTal, //enten hver position nævnes, men helst flere på een gang
+    "pos00-04": regelOmAtDetSkalVæreTal,
+    "pos05": ["a", "c", "d", "n", "p"],
+    "pos06": ["a", "t"],
+    "pos07": "m",
+    "pos08": " ",
+    "pos09": [" ", "a"], //blank betyder MARC-8 tegnsæt og det skal konverteres til utf8
+    "pos10-11": "22",
+    "pos12-16": regelOmAtDetSkalVæreTal,
+    "pos17": [" ", "1", "2", "3", "4", "5", "7", "8", "u", "z"],
+    "pos18": [" ", "a", "c", "i", "n", "u"],
+    "pos19": " ",
+    "pos20-23": "4500"
+  },
   "controlfields": {
     "001": {
+      "url": "https://www.loc.gov/marc/bibliographic/bd001.html",
       "mandatory": true,
       "repeatable": false
+    },
+    "003": {
+      "url": "https://www.loc.gov/marc/bibliographic/bd003.html",
+      "mandatory": true, //her har vi vores submitter/biblioteksnummer men i kode form, som er kontrolleret af Library Of Congress
+      "repeatable": false,
+      "value": ListeOverGodkendteOrganisationerMåske
+    },
+    "005": {
+      "url": "https://www.loc.gov/marc/bibliographic/bd005.html",
+      "mandatory": true,
+      "repeatable": false,
+      "value": checkForValidDato  ISO 8601
+    }
+  ,
+    "006": {
+      "url": "https://www.loc.gov/marc/bibliographic/bd006.html",
+      "pos00": ["a", "t"],
+      "pos01-04": [" ", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "o", "p", "|"],
+      "pos05": [" ", "a", "b", "c", "d", "e", "f", "g", "j", "|"],
+      "pos06": [" ", "a", "b", "c", "d", "f", "o", "q", "r", "s", "|"],
+      "pos07-10": [" ", "a", "b", "c", "d", "e", "f", "g", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "y", "z", "2", "5", "6", "|"],
+      "pos11": [" ", "a", "c", "f", "i", "l","m", "o", "s", "u", "z", "|"],
+      "pos12": ["0", "1", "|"],
+      "pos13": ["0", "1", "|"],
+      "pos14": ["0", "1", "|"],
+      "pos15": "#", //positionen er undefined
+      "pos16": ["0", "1", "d", "e", "f", "h", "i", "j", "m", "p", "s", "u", "|"],
+      "pos17": [" ", "a", "b", "c", "d", "|"]
+    },
+    "008": {
+      "url": "https://www.loc.gov/marc/bibliographic/bd008.html",
+      "mandatory": true,
+      "repeatable": false,
+      "pos00-05": checkForValidDatoYYMMDD,
+      "pos06": ["b", "c", "d", "e", "i", "k", "m", "n", "p", "q", "r", "s", "t", "u","|"],
+      "pos07-10": checkForValidDatoYYYY, //se specifikation her https://www.loc.gov/marc/bibliographic/bd008a.html
+      "pos11-14": checkForValidDatoYYYY,//se specifikation her https://www.loc.gov/marc/bibliographic/bd008a.html
+      "pos15-17": checkForValidCountry, //https://www.loc.gov/marc/countries/countries_code.html
+      "pos18-21": [" ", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "o", "p", "|"],
+      "pos22": [" ", "a", "b", "c", "d", "e", "f", "g", "j", "|"],
+      "pos23": [" ", "a", "b", "c", "d", "f", "o", "q", "r", "s", "|"],
+      "pos24-27": [" ", "a", "b", "c", "d", "e", "f", "g", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "y", "z", "2", "5", "6", "|"],
+      "pos28": [" ", "a", "c", "f", "i", "l","m", "o", "s", "u", "z", "|"],
+      "pos29": ["0", "1", "|"],
+      "pos30": ["0", "1", "|"],
+      "pos31": ["0", "1", "|"],
+      "pos32": "#", //positionen er undefined
+      "pos33": ["0", "1", "d", "e", "f", "h", "i", "j", "m", "p", "s", "u", "|"],
+      "pos34": [" ", "a", "b", "c", "d", "|"],
+      "pos35-37": checkForValidLanguage, //https://www.loc.gov/marc/languages/language_code.html
+      "pos38": [" ", "d", "o", "r", "s", "x", "|"],
+      "pos39": [" ", "c", "d", "u", "|"],
     }
   },
   "fields": {
