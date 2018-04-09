@@ -124,6 +124,8 @@
     "100":{
       "url":"https://www.loc.gov/marc/bibliographic/bd100.html",
       "repeatable": false,
+      "ind1": ["0", "1", "3"],
+      "ind2": [" "],
       "subfields":{
         "a": {
           "mandatory": true,
@@ -172,6 +174,8 @@
       "url":"https://www.loc.gov/marc/bibliographic/bd245.html",
       "mandatory":true,
       "repeatable":false,
+      "ind1": ["0", "1"],
+      "ind2": ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"],
       "subfields":{
         "a": {
           "mandatory": true,
@@ -206,8 +210,8 @@
     },
     "260": {
       "url":"https://www.loc.gov/marc/bibliographic/bd260.html",
-      "mandatory":false,
-      "repeatable":true,
+      "ind1": [ " ", "2", "3" ],
+      "ind2": [ " " ],
       "subfields":{
         "a": {},
         "b": {},
@@ -224,10 +228,25 @@
         "8": {}
       }
     },
+    "264": {
+      "url":"https://www.loc.gov/marc/bibliographic/bd264.html",
+      "ind1": [ " ", "2", "3" ],
+      "ind2": [ "0", "1", "2", "3", "4" ],
+      "subfields":{
+        "a": {},
+        "b": {},
+        "c": {},
+        "3": {
+          "repeatable": false
+        },
+        "6": {
+          "repeatable": false
+        },
+        "8": {}
+      }
+    },
     "300": {
       "url":"https://www.loc.gov/marc/bibliographic/bd300.html",
-      "mandatory":false,
-      "repeatable":true,
       "subfields":{
         "a": {},
         "b": {
@@ -239,6 +258,70 @@
         },
         "f": {},
         "g": {},
+        "3": {
+          "repeatable": false
+        },
+        "6": {
+          "repeatable": false
+        },
+        "8": {}
+      }
+    },
+    "336": {
+      "url":"https://www.loc.gov/marc/bibliographic/bd336.html",
+      "subfields":{
+        "a": {},
+        "b": {
+        },
+        "0": {},
+        "1": {
+        },
+        "2": {
+          "repeatable": false
+        },
+        "3": {
+          "repeatable": false
+        },
+        "6": {
+          "repeatable": false
+        },
+        "8": {}
+      }
+    }
+  ,
+    "337": {
+      "url":"https://www.loc.gov/marc/bibliographic/bd337.html",
+      "subfields":{
+        "a": {},
+        "b": {
+        },
+        "0": {},
+        "1": {
+        },
+        "2": {
+          "repeatable": false
+        },
+        "3": {
+          "repeatable": false
+        },
+        "6": {
+          "repeatable": false
+        },
+        "8": {}
+      }
+    },
+    "338": {
+      "url":"https://www.loc.gov/marc/bibliographic/bd338.html",
+      "subfields":{
+        "a": {},
+        "b": {
+        },
+        "0": {},
+        "1": {
+        },
+        "2": {
+          "repeatable": false
+        },
         "3": {
           "repeatable": false
         },
