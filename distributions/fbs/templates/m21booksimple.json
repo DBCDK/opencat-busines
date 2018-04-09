@@ -70,7 +70,9 @@
         "g": {},
         "j": {},
         "k": {},
-        "l": {},
+        "l": {
+          "repeatable": false
+        },
         "n": {},
         "p": {},
         "q":  {
@@ -106,7 +108,6 @@
           "repeatable": false
         },
         "c": {
-          "mandatory": true,
           "repeatable": false
         },
         "f": {
@@ -118,6 +119,7 @@
         "h": {
           "repeatable": false
         },
+        "k": {},
         "n": {},
         "p": {},
         "s": {
