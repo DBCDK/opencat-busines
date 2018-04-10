@@ -69,6 +69,11 @@ var Validator = function () {
             var result = [];
             var template = templateProvider();
             var isDelete = false;
+
+            if (template.leader !== undefined) {
+                result = result.concat(__validateLeader(record, templateProvider))
+            }
+
             if (record.fields !== undefined) {
                 isDelete = isLegalDeleteRecord(record, templateProvider, settings);
                 // Validation should only be performed if it isn't a legal delete record
@@ -99,6 +104,61 @@ var Validator = function () {
             return result;
         } finally {
             Log.trace("Exit - Validator.doValidateRecord()");
+        }
+    }
+
+    function __validateLeader(record, templateProvider) {
+        Log.trace("Enter - Validator.__validateLeader()");
+
+        try {
+            var bundle = ResourceBundleFactory.getBundle(BUNDLE_NAME);
+            var template = templateProvider();
+            var templateLeader = template.leader;
+            var recordLeader = record.leader;
+
+            Log.info(JSON.stringify(recordLeader));
+
+            if (recordLeader === undefined) {
+                return [ValidateErrors.leaderError("", ResourceBundle.getStringFormat(bundle, "leader.missing"))];
+            }
+
+            if (templateLeader.hasOwnProperty("length") &&
+                templateLeader.length !== recordLeader.length) {
+                return [ValidateErrors.leaderError("", ResourceBundle.getStringFormat(bundle, "leader.length.mismatch",
+                    templateLeader.length, recordLeader.length))];
+            }
+
+            if (templateLeader.hasOwnProperty("positions")) {
+                for (var i = 0; i < recordLeader.length; i++) {
+                    var leaderValue = recordLeader[i];
+
+                    var positionString = i.toString();
+                    if (i < 10) {
+                        positionString = "0" + positionString;
+                    }
+                    var positionValue = templateLeader.positions[positionString];
+
+                    if (positionValue.hasOwnProperty("values")) {
+                        if (positionValue.values.indexOf(leaderValue) === -1) {
+                            return [ValidateErrors.leaderError("", ResourceBundle.getStringFormat(bundle, "leader.value.contain.error",
+                                i, positionValue.values, leaderValue))];
+                        }
+                    }
+
+                    if (positionValue.hasOwnProperty("matches")) {
+                        var matches = positionValue.matches;
+                        var pattern = new RegExp(matches.value);
+                        if (!pattern.test(leaderValue)) {
+                            return [ValidateErrors.leaderError("", ResourceBundle.getStringFormat(bundle, "leader.value.match.error",
+                                i, matches.description, leaderValue))];
+                        }
+                    }
+                }
+            }
+
+            return [];
+        } finally {
+            Log.trace("Exit - Validator.__validateLeader()");
         }
     }
 
@@ -252,6 +312,7 @@ var Validator = function () {
         'BUNDLE_NAME': BUNDLE_NAME,
         'doValidateRecord': doValidateRecord,
         '__validateField': __validateField,
-        '__validateSubfield': __validateSubfield
+        '__validateSubfield': __validateSubfield,
+        '__validateLeader': __validateLeader
     };
 }();

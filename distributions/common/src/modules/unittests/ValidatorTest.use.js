@@ -137,6 +137,68 @@ UnitTest.addFixture("Validator.doValidateRecord", function () {
         [valWarning]);
 });
 
+UnitTest.addFixture("Test __validateLeader", function () {
+    var bundle = ResourceBundleFactory.getBundle(Validator.BUNDLE_NAME);
+
+    var templateWithLeader = {
+        "leader": {
+            "length": 3,
+            "positions": {
+                "00": {
+                    "values": ['a']
+                },
+                "01": {
+                    "values": ['a', 'b', 'c']
+                },
+                "02": {
+                    "matches": {
+                        "value": "^[0-9]$",
+                        "description": "Et tal"
+                    }
+                }
+            }
+        }
+    };
+
+    var record = {
+        leader: "ac4"
+    };
+
+    Assert.equalValue("1 __validateLeader valid controlfield", Validator.__validateLeader(record, function () {
+        return templateWithLeader;
+    }), []);
+
+    record = {
+        leader: "ac4d"
+    };
+
+    Assert.equalValue("2 __validateLeader leader too long", Validator.__validateLeader(record, function () {
+        return templateWithLeader;
+    }), [ValidateErrors.fieldError("", ResourceBundle.getStringFormat(bundle, "leader.length.mismatch", 3, 4))]);
+
+    record = {};
+
+    Assert.equalValue("3 __validateLeader leader missing", Validator.__validateLeader(record, function () {
+        return templateWithLeader;
+    }), [ValidateErrors.fieldError("", ResourceBundle.getStringFormat(bundle, "leader.missing"))]);
+
+    record = {
+        "leader": "ddd"
+    };
+
+    Assert.equalValue("4 __validateLeader invalid value", Validator.__validateLeader(record, function () {
+        return templateWithLeader;
+    }), [ValidateErrors.fieldError("", ResourceBundle.getStringFormat(bundle, "leader.value.contain.error", 0, 'a', 'd'))]);
+
+    record = {
+        "leader": "acd"
+    };
+
+    Assert.equalValue("4 __validateLeader invalid value", Validator.__validateLeader(record, function () {
+        return templateWithLeader;
+    }), [ValidateErrors.fieldError("", ResourceBundle.getStringFormat(bundle, "leader.value.match.error", 2, 'Et tal', 'd'))]);
+});
+
 UnitTest.addFixture("Validator.__validateField", function () {
     var bundle = ResourceBundleFactory.getBundle(Validator.BUNDLE_NAME);
 

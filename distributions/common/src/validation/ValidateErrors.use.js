@@ -41,6 +41,14 @@ var ValidateErrors = function () {
         return __error(url, message);
     }
 
+    function controlFieldError(url, message) {
+        return __error(url, message);
+    }
+
+    function leaderError(url, message) {
+        return __error(url, message);
+    }
+
     function __error(url, message) {
         if (url === undefined) {
             return __errorWoUrl(message);
@@ -67,6 +75,8 @@ var ValidateErrors = function () {
     return {
         'recordError': recordError,
         'fieldError': fieldError,
-        'subfieldError': subfieldError
+        'subfieldError': subfieldError,
+        'controlFieldError': controlFieldError,
+        'leaderError': leaderError
     };
 }();
