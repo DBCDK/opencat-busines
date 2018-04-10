@@ -86,6 +86,11 @@ var TemplateOptimizer = function () {
 
             var mandatoryNames = [];
             var repeatableNames = [];
+
+            if (template.hasOwnProperty("leader")) {
+                result.leader = template.leader;
+            }
+
             for (var name in template.fields) {
                 if (!template.fields.hasOwnProperty(name)) {
                     continue;
