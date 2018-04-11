@@ -10,7 +10,7 @@
       "mandatory": true,
       "repeatable": false
     },
-    "controlfield": {
+    "control": {
       "mandatory": false,
       "repeatable": true
     },
@@ -178,6 +178,419 @@
           "0"
         ]
       }
+    }
+  },
+  "control": {
+    "001": {
+      "url": "https://www.loc.gov/marc/bibliographic/bd001.html",
+      "mandatory": true,
+      "repeatable": false,
+      "rules": [
+        {
+          "type": "controlfield.001"
+        }
+      ]
+    },
+    "003": {
+      "url": "https://www.loc.gov/marc/bibliographic/bd003.html",
+      "mandatory": true,
+      "repeatable": false,
+      "rules": [
+        {
+          "type": "controlfield.003"
+        }
+      ]
+    },
+    "005": {
+      "url": "https://www.loc.gov/marc/bibliographic/bd005.html",
+      "mandatory": true,
+      "repeatable": false,
+      "length": 16,
+      "rules": [
+        {
+          "type": "controlfield.005"
+        }
+      ]
+    },
+    "006": {
+      "url": "https://www.loc.gov/marc/bibliographic/bd006.html",
+      "length": 18,
+      "rules": [
+        {
+          "type": "controlfield.006",
+          "params": [
+            {
+              "start": 0,
+              "end": 0,
+              "values": [
+                "a",
+                "t"
+              ]
+            },
+            {
+              "start": 1,
+              "end": 4,
+              "values": [
+                " ",
+                "a",
+                "b",
+                "c",
+                "d",
+                "e",
+                "f",
+                "g",
+                "h",
+                "i",
+                "j",
+                "k",
+                "l",
+                "m",
+                "o",
+                "p",
+                "|"
+              ]
+            },
+            {
+              "start": 5,
+              "end": 5,
+              "values": [
+                " ",
+                "a",
+                "b",
+                "c",
+                "d",
+                "e",
+                "f",
+                "g",
+                "j",
+                "|"
+              ]
+            },
+            {
+              "start": 6,
+              "end": 6,
+              "values": [
+                " ",
+                "a",
+                "b",
+                "c",
+                "d",
+                "f",
+                "o",
+                "q",
+                "r",
+                "s",
+                "|"
+              ]
+            },
+            {
+              "start": 7,
+              "end": 10,
+              "values": [
+                " ",
+                "a",
+                "b",
+                "c",
+                "d",
+                "e",
+                "f",
+                "g",
+                "i",
+                "j",
+                "k",
+                "l",
+                "m",
+                "n",
+                "o",
+                "p",
+                "q",
+                "r",
+                "s",
+                "t",
+                "u",
+                "v",
+                "w",
+                "y",
+                "z",
+                "2",
+                "5",
+                "6",
+                "|"
+              ]
+            },
+            {
+              "start": 11,
+              "end": 11,
+              "values": [
+                " ",
+                "a",
+                "c",
+                "f",
+                "i",
+                "l",
+                "m",
+                "o",
+                "s",
+                "u",
+                "z",
+                "|"
+              ]
+            },
+            {
+              "start": 12,
+              "end": 12,
+              "values": [
+                "0",
+                "1",
+                "|"
+              ]
+            },
+            {
+              "start": 13,
+              "end": 13,
+              "values": [
+                "0",
+                "1",
+                "|"
+              ]
+            },
+            {
+              "start": 14,
+              "end": 14,
+              "values": [
+                "0",
+                "1",
+                "|"
+              ]
+            },
+            {
+              "start": 15,
+              "end": 15,
+              "values": [
+                "#"
+              ]
+            },
+            {
+              "start": 16,
+              "end": 16,
+              "values": [
+                "0",
+                "1",
+                "d",
+                "e",
+                "f",
+                "h",
+                "i",
+                "j",
+                "m",
+                "p",
+                "s",
+                "u",
+                "|"
+              ]
+            },
+            {
+              "start": 17,
+              "end": 17,
+              "values": [
+                " ",
+                "a",
+                "b",
+                "c",
+                "d",
+                "|"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "008": {
+      "url": "https://www.loc.gov/marc/bibliographic/bd008.html",
+      "length": 40,
+      "mandatory": true,
+      "repeatable": false,
+      "rules": [
+        {
+          "type": "controlfield.008",
+          "params": [
+            {
+              "start": 18,
+              "end": 21,
+              "values": [
+                " ",
+                "a",
+                "b",
+                "c",
+                "d",
+                "e",
+                "f",
+                "g",
+                "h",
+                "i",
+                "j",
+                "k",
+                "l",
+                "m",
+                "o",
+                "p",
+                "|"
+              ]
+            },
+            {
+              "start": 22,
+              "end": 22,
+              "values": [
+                " ",
+                "a",
+                "b",
+                "c",
+                "d",
+                "e",
+                "f",
+                "g",
+                "j",
+                "|"
+              ]
+            },
+            {
+              "start": 23,
+              "end": 23,
+              "values": [
+                " ",
+                "a",
+                "b",
+                "c",
+                "d",
+                "f",
+                "o",
+                "q",
+                "r",
+                "s",
+                "|"
+              ]
+            },
+            {
+              "start": 24,
+              "end": 27,
+              "values": [
+                " ",
+                "a",
+                "b",
+                "c",
+                "d",
+                "e",
+                "f",
+                "g",
+                "i",
+                "j",
+                "k",
+                "l",
+                "m",
+                "n",
+                "o",
+                "p",
+                "q",
+                "r",
+                "s",
+                "t",
+                "u",
+                "v",
+                "w",
+                "y",
+                "z",
+                "2",
+                "5",
+                "6",
+                "|"
+              ]
+            },
+            {
+              "start": 28,
+              "end": 28,
+              "values": [
+                " ",
+                "a",
+                "c",
+                "f",
+                "i",
+                "l",
+                "m",
+                "o",
+                "s",
+                "u",
+                "z",
+                "|"
+              ]
+            },
+            {
+              "start": 29,
+              "end": 29,
+              "values": [
+                "0",
+                "1",
+                "|"
+              ]
+            },
+            {
+              "start": 30,
+              "end": 30,
+              "values": [
+                "0",
+                "1",
+                "|"
+              ]
+            },
+            {
+              "start": 31,
+              "end": 31,
+              "values": [
+                "0",
+                "1",
+                "|"
+              ]
+            },
+            {
+              "start": 32,
+              "end": 32,
+              "values": [
+                "#"
+              ]
+            },
+            {
+              "start": 33,
+              "end": 33,
+              "values": [
+                "0",
+                "1",
+                "d",
+                "e",
+                "f",
+                "h",
+                "i",
+                "j",
+                "m",
+                "p",
+                "s",
+                "u",
+                "|"
+              ]
+            },
+            {
+              "start": 34,
+              "end": 34,
+              "values": [
+                " ",
+                "a",
+                "b",
+                "c",
+                "d",
+                "|"
+              ]
+            }
+          ]
+        }
+      ]
     }
   },
   "fields": {

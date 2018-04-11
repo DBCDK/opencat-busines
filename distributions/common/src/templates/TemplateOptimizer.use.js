@@ -47,6 +47,7 @@ use("AllFieldsMandatoryIfOneExist");
 use("FieldsMandatory");
 use("MustContainOneOfFields");
 use("SubfieldsHaveValuesDemandsOtherSubfield");
+use("ControlFieldsMandatory");
 
 EXPORTED_SYMBOLS = ['TemplateOptimizer'];
 
@@ -85,13 +86,45 @@ var TemplateOptimizer = function () {
             }
 
             var mandatoryNames = [];
+            var mandatoryControl = [];
             var repeatableNames = [];
 
             if (template.hasOwnProperty("leader")) {
                 result.leader = template.leader;
             }
 
-            for (var name in template.fields) {
+            if (template.hasOwnProperty("control")) {
+                for (var name in template.control) {
+                    if (!template.control.hasOwnProperty(name)) {
+                        continue;
+                    }
+
+                    var controlField = template.control[name];
+                    result.control[name] = optimizeControlField(name, controlField, template.defaults.control);
+
+                    var controlIsMandatory = controlField.mandatory;
+                    if (controlIsMandatory === undefined) {
+                        controlIsMandatory = template.defaults.control.mandatory;
+                    }
+                    if (controlIsMandatory === true) {
+                        mandatoryControl.push()
+                    }
+                }
+
+                if (controlIsMandatory.length > 0) {
+                    controlIsMandatory.sort();
+
+                    result.rules.push({
+                        name: "ControlFieldsMandatory.validateRecord",
+                        type: ControlFieldsMandatory.validateRecord,
+                        params: {
+                            fields: controlIsMandatory
+                        }
+                    });
+                }
+            }
+
+            for (name in template.fields) {
                 if (!template.fields.hasOwnProperty(name)) {
                     continue;
                 }
@@ -143,6 +176,22 @@ var TemplateOptimizer = function () {
             return result;
         } finally {
             Log.trace("Exit -- TemplateOptimizer.optimize(): ", result);
+        }
+    }
+
+    function optimizeControlField(controlFieldName, controlField, defaultControl) {
+        Log.trace("Enter -- TemplateOptimizer.optimizeField()");
+        var result = undefined;
+
+        try {
+            result = {
+                "url": controlField.url,
+                "rules": controlField.rules
+            };
+
+            return result;
+        } finally {
+            Log.trace("Exit -- TemplateOptimizer.optimizeField(): ", result);
         }
     }
 
@@ -331,6 +380,8 @@ var TemplateOptimizer = function () {
         Log.trace("Enter -- TemplateOptimizer.convertRuleTypeNameToFunction( " + typeName + " )");
         try {
             switch (typeName) {
+                case "RecordRules.controlFieldsMandatory":
+                    return ControlFieldsMandatory.validateRecord();
                 case "RecordRules.mustContainOneOfFields":
                     return MustContainOneOfFields.validateRecord;
                 case "RecordRules.idFieldExists":

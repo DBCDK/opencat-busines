@@ -70,8 +70,12 @@ var Validator = function () {
             var template = templateProvider();
             var isDelete = false;
 
-            if (template.leader !== undefined) {
+            if (template.hasOwnProperty('leader')) {
                 result = result.concat(__validateLeader(record, templateProvider))
+            }
+
+            if (template.hasOwnProperty('control')) {
+
             }
 
             if (record.fields !== undefined) {

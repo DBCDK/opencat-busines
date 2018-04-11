@@ -106,6 +106,16 @@ var ValidationUtil = function () {
         return false;
     }
 
+    function recordContainsControlField(record, controlFieldName) {
+        Log.trace("RecordRules.recordContainsControlField");
+        for (var i = 0; i < record.control.length; ++i) {
+            if (record.control[i].name === fieldName) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     /**
      * This function is used to see if a given field/subfield exists in the record.
      *
@@ -160,6 +170,7 @@ var ValidationUtil = function () {
         "isNumber": isNumber,
         "doesFieldContainSubfield": doesFieldContainSubfield,
         "getFields": getFields,
+        "recordContainsControlField": recordContainsControlField,
         "recordContainsField": recordContainsField,
         "recordContainsSubfield": recordContainsSubfield
     };
