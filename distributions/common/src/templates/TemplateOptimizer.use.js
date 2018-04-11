@@ -94,6 +94,8 @@ var TemplateOptimizer = function () {
             }
 
             if (template.hasOwnProperty("control")) {
+                result.control = [];
+
                 for (var name in template.control) {
                     if (!template.control.hasOwnProperty(name)) {
                         continue;
