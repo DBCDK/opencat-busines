@@ -77,8 +77,8 @@ var Validator = function () {
             if (template.hasOwnProperty('control')) {
                 for (var c = 0; c < record.control.length; c++) {
                     var controlResult = __validateControlField(record, record.control[c], templateProvider);
-                    for (var pos = 0; pos < subResult.length; pos++) {
-                        controlResult[j].ordinalPositionOfField = c;
+                    for (var pos = 0; pos < controlResult.length; pos++) {
+                        controlResult[pos].ordinalPositionOfField = c;
                     }
                     result = result.concat(controlResult);
                 }
