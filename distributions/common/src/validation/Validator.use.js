@@ -180,7 +180,7 @@ var Validator = function () {
             var template = templateProvider();
             var templateControlField = template.control[field.name];
 
-            if (templateField.rules instanceof Array) {
+            if (templateControlField.rules instanceof Array) {
                 for (var i = 0; i < templateControlField.rules.length; i++) {
                     var rule = templateControlField.rules[i];
 
