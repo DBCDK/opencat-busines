@@ -25,6 +25,14 @@ use("SubfieldValueExcludesField");
 use("SubfieldValueMakesFieldsAllowed");
 use("SubfieldAllowedIfSubfieldValueInOtherFieldExists");
 
+// Control field rules
+use("ControlField001Validator");
+use("ControlField003Validator");
+use("ControlField005Validator");
+use("ControlField006Validator");
+use("ControlField007Validator");
+use("ControlField008Validator");
+
 //field rules
 use("FieldDemandsOtherFieldAndSubfield");
 use("SubfieldConditionalMandatory");
@@ -215,6 +223,13 @@ var TemplateOptimizer = function () {
                 "rules": controlField.rules
             };
 
+            if (result.rules === undefined && defaultControl.rules !== undefined) {
+                result.rules = JSON.parse(JSON.stringify(defaultControl.rules));
+            }
+
+            result.rules = convertTypeNameOfAllRules(result.rules);
+            Log.info("Control field rules (", controlFieldName, "): " + __formatRuleNames(result.rules));
+
             return result;
         } finally {
             Log.trace("Exit -- TemplateOptimizer.optimizeField(): ", result);
@@ -295,7 +310,7 @@ var TemplateOptimizer = function () {
                 result.sorting = field.sorting;
             }
             result.rules = convertTypeNameOfAllRules(result.rules);
-            Log.trace("Field rules (", fieldName, "): " + __formatRuleNames(result.rules));
+            Log.info("Field rules (", fieldName, "): " + __formatRuleNames(result.rules));
             return result;
         } finally {
             Log.trace("Exit -- TemplateOptimizer.optimizeField(): ", result);
@@ -432,6 +447,19 @@ var TemplateOptimizer = function () {
                     return FieldDemandsOtherFields.validateRecord;
                 case "RecordRules.subfieldsHaveValuesDemandsOtherSubfield":
                     return SubfieldsHaveValuesDemandsOtherSubfield.validateRecord;
+
+                case "ControlFieldRules.001":
+                    return ControlField001Validator.validate;
+                case "ControlFieldRules.003":
+                    return ControlField003Validator.validate;
+                case "ControlFieldRules.005":
+                    return ControlField005Validator.validate;
+                case "ControlFieldRules.006":
+                    return ControlField006Validator.validate;
+                case "ControlFieldRules.007":
+                    return ControlField007Validator.validate;
+                case "ControlFieldRules.008":
+                    return ControlField008Validator.validate;
 
                 case "FieldRules.fieldsIndicator":
                     return FieldsIndicator.validateField;

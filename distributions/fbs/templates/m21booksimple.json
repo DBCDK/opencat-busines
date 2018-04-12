@@ -187,7 +187,7 @@
       "repeatable": false,
       "rules": [
         {
-          "type": "controlfield.001"
+          "type": "ControlFieldRules.001"
         }
       ]
     },
@@ -197,7 +197,7 @@
       "repeatable": false,
       "rules": [
         {
-          "type": "controlfield.003"
+          "type": "ControlFieldRules.003"
         }
       ]
     },
@@ -208,7 +208,7 @@
       "length": 16,
       "rules": [
         {
-          "type": "controlfield.005"
+          "type": "ControlFieldRules.005"
         }
       ]
     },
@@ -217,7 +217,7 @@
       "length": 18,
       "rules": [
         {
-          "type": "controlfield.006",
+          "type": "ControlFieldRules.006",
           "params": [
             {
               "start": 0,
@@ -412,7 +412,7 @@
       "repeatable": false,
       "rules": [
         {
-          "type": "controlfield.008",
+          "type": "ControlFieldRules.008",
           "params": [
             {
               "start": 18,

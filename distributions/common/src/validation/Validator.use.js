@@ -75,7 +75,13 @@ var Validator = function () {
             }
 
             if (template.hasOwnProperty('control')) {
-
+                for (var c = 0; c < record.control.length; c++) {
+                    var controlResult = __validateControlField(record, record.control[c], templateProvider);
+                    for (var pos = 0; pos < subResult.length; pos++) {
+                        controlResult[j].ordinalPositionOfField = c;
+                    }
+                    result = result.concat(controlResult);
+                }
             }
 
             if (record.fields !== undefined) {
@@ -163,6 +169,42 @@ var Validator = function () {
             return [];
         } finally {
             Log.trace("Exit - Validator.__validateLeader()");
+        }
+    }
+
+    function __validateControlField(record, field, templateProvider) {
+        Log.trace("Enter - Validator.__validateControlField()");
+
+        try {
+            var bundle = ResourceBundleFactory.getBundle(BUNDLE_NAME);
+            var template = templateProvider();
+            var templateControlField = template.control[field.name];
+
+            if (templateField.rules instanceof Array) {
+                for (var i = 0; i < templateField.rules.length; i++) {
+                    var rule = templateField.rules[i];
+
+                    Log.debug("Exec rule [", field.name === undefined ? "field name undefined" : field.name, "]: ", rule.name === undefined ? "rule name undefined" : rule.name);
+                    if (rule.name !== undefined) {
+                        try {
+                            TemplateOptimizer.setTemplatePropertyOnRule(rule, template);
+
+                            var valErrors = rule.type(record, field, rule.params);
+                            valErrors = __updateErrorTypeOnValidationResults(rule, valErrors);
+                            result = result.concat(valErrors);
+                        } catch (ex) {
+                            throw ResourceBundle.getStringFormat(bundle, "field.execute.error", field.name, ex);
+                        }
+                    }
+                }
+            }
+
+
+
+
+            return [];
+        } finally {
+            Log.trace("Exit - Validator.__validateControlField()");
         }
     }
 
