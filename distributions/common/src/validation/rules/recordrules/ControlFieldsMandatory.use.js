@@ -13,7 +13,7 @@ var ControlFieldsMandatory = function () {
     var BUNDLE_NAME = "validation";
 
     function validateRecord(record, params) {
-        Log.trace("Enter - FieldsMandatory.validateRecord( ", record, ", ", params, " )");
+        Log.trace("Enter - ControlFieldsMandatory.validateRecord( ", record, ", ", params, " )");
         var result = [];
         try {
             var bundle = ResourceBundleFactory.getBundle(BUNDLE_NAME);
@@ -29,7 +29,7 @@ var ControlFieldsMandatory = function () {
             }
             return result;
         } finally {
-            Log.trace("Exit - FieldsMandatory.validateRecord: ", result);
+            Log.trace("Exit - ControlFieldsMandatory.validateRecord: ", result);
         }
     }
 

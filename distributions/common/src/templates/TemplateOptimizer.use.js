@@ -48,6 +48,7 @@ use("FieldsMandatory");
 use("MustContainOneOfFields");
 use("SubfieldsHaveValuesDemandsOtherSubfield");
 use("ControlFieldsMandatory");
+use("ControlFieldsRepeatable");
 
 EXPORTED_SYMBOLS = ['TemplateOptimizer'];
 
@@ -88,6 +89,7 @@ var TemplateOptimizer = function () {
             var mandatoryNames = [];
             var mandatoryControl = [];
             var repeatableNames = [];
+            var repeatableControl = [];
 
             if (template.hasOwnProperty("leader")) {
                 result.leader = template.leader;
@@ -95,6 +97,7 @@ var TemplateOptimizer = function () {
 
             if (template.hasOwnProperty("control")) {
                 result.control = [];
+                Log.info("Found control field in template");
 
                 for (var name in template.control) {
                     if (!template.control.hasOwnProperty(name)) {
@@ -108,19 +111,40 @@ var TemplateOptimizer = function () {
                     if (controlIsMandatory === undefined) {
                         controlIsMandatory = template.defaults.control.mandatory;
                     }
+
                     if (controlIsMandatory === true) {
-                        mandatoryControl.push()
+                        mandatoryControl.push(name);
+                    }
+
+                    var isRepeatable = controlField.repeatable;
+                    if (isRepeatable === undefined) {
+                        isRepeatable = template.defaults.control.repeatable;
+                    }
+                    if (isRepeatable === true) {
+                        repeatableControl.push(name);
                     }
                 }
 
-                if (controlIsMandatory.length > 0) {
-                    controlIsMandatory.sort();
-
+                if (mandatoryControl.length > 0) {
+                    mandatoryControl.sort();
+                    Log.info("Mandatory control fields: " + JSON.stringify(mandatoryControl));
                     result.rules.push({
                         name: "ControlFieldsMandatory.validateRecord",
                         type: ControlFieldsMandatory.validateRecord,
                         params: {
-                            fields: controlIsMandatory
+                            fields: mandatoryControl
+                        }
+                    });
+                }
+
+                if (repeatableControl.length > 0) {
+                    repeatableControl.sort();
+                    Log.info("Repeatable control fields: " + JSON.stringify(repeatableControl));
+                    result.rules.push({
+                        name: "ControlFieldsRepeatable.validateRecord",
+                        type: ControlFieldsRepeatable.validateRecord,
+                        params: {
+                            fields: repeatableControl
                         }
                     });
                 }
@@ -140,10 +164,9 @@ var TemplateOptimizer = function () {
                 }
                 if (isMandatory === true) {
                     mandatoryNames.push(name);
-                    Log.trace("Adding mandatory name '", name, "'. New mandatoryNames: ", JSON.stringify(mandatoryNames));
                 }
 
-                var isRepeatable = field.repeatable;
+                isRepeatable = field.repeatable;
                 if (isRepeatable === undefined) {
                     isRepeatable = template.defaults.field.repeatable;
                 }
@@ -154,7 +177,7 @@ var TemplateOptimizer = function () {
 
             if (mandatoryNames.length > 0) {
                 mandatoryNames.sort();
-                Log.debug("mandatoryNames: ", JSON.stringify(mandatoryNames));
+                Log.info("Mandatory data fields: ", JSON.stringify(mandatoryNames));
                 result.rules.push({
                     name: "FieldsMandatory.validateRecord",
                     type: FieldsMandatory.validateRecord,
@@ -166,6 +189,7 @@ var TemplateOptimizer = function () {
 
             if (repeatableNames.length > 0) {
                 repeatableNames.sort();
+                Log.info("Repeatable data fields: ", JSON.stringify(repeatableNames));
                 result.rules.push({
                     name: "RepeatableFields.validateRecord",
                     type: RepeatableFields.validateRecord,
@@ -382,8 +406,10 @@ var TemplateOptimizer = function () {
         Log.trace("Enter -- TemplateOptimizer.convertRuleTypeNameToFunction( " + typeName + " )");
         try {
             switch (typeName) {
-                case "RecordRules.controlFieldsMandatory":
-                    return ControlFieldsMandatory.validateRecord();
+                case "RecordRules.ControlFieldsMandatory":
+                    return ControlFieldsMandatory.validateRecord;
+                case "RecordRules.ControlFieldsRepeatable":
+                    return ControlFieldsRepeatable.validateRecord;
                 case "RecordRules.mustContainOneOfFields":
                     return MustContainOneOfFields.validateRecord;
                 case "RecordRules.idFieldExists":
