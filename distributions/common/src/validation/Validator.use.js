@@ -101,7 +101,7 @@ var Validator = function () {
             if (!isDelete && template.rules instanceof Array) {
                 for (var k = 0; k < template.rules.length; k++) {
                     var rule = template.rules[k];
-                    Log.debug("Record rule: ", rule.name === undefined ? "name undefined" : rule.name);
+                    Log.warn("Record rule: ", rule.name === undefined ? "name undefined" : rule.name, " index ", k);
                     try {
                         TemplateOptimizer.setTemplatePropertyOnRule(rule, template);
                         var valErrors = rule.type(record, rule.params, settings);
@@ -172,7 +172,7 @@ var Validator = function () {
             Log.trace("Exit - Validator.__validateLeader()");
         }
     }
-
+/*
     function __validateControlField(record, field, templateProvider) {
         Log.trace("Enter - Validator.__validateControlField()");
 
@@ -207,7 +207,7 @@ var Validator = function () {
         } finally {
             Log.trace("Exit - Validator.__validateControlField()");
         }
-    }
+    }*/
 
     /**
      * Validates a single field in a record.

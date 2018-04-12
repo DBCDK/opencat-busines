@@ -103,6 +103,7 @@ var TemplateOptimizer = function () {
                 result.leader = template.leader;
             }
 
+            /*
             if (template.hasOwnProperty("control")) {
                 result.control = [];
                 Log.info("Found control field in template");
@@ -157,7 +158,7 @@ var TemplateOptimizer = function () {
                     });
                 }
             }
-
+*/
             for (name in template.fields) {
                 if (!template.fields.hasOwnProperty(name)) {
                     continue;
@@ -213,6 +214,7 @@ var TemplateOptimizer = function () {
         }
     }
 
+    /*
     function optimizeControlField(controlFieldName, controlField, defaultControl) {
         Log.trace("Enter -- TemplateOptimizer.optimizeField()");
         var result = undefined;
@@ -234,7 +236,7 @@ var TemplateOptimizer = function () {
         } finally {
             Log.trace("Exit -- TemplateOptimizer.optimizeField(): ", result);
         }
-    }
+    }*/
 
     // TODO: JSDoc
     function optimizeField(fieldName, field, fieldDefs, subfieldDefs) {
