@@ -13,12 +13,13 @@ var ControlField008Validator = function () {
     function validate(record, controlField, params) {
         Log.trace("Enter -- ControlField008Validator.validate");
         try {
-            if (controlField.value.length !== 16) {
-                return [ValidateErrors.controlFieldError("TODO:fixurl", "Kontrolfelt 008 skal have en længde på 40 tegn men var kun " + controlField.value.length)];
-            }
-
+            Log.info("ControlField008Validator");
+            Log.info("Control field: ", JSON.stringify(controlField));
             Log.info("Params: ", JSON.stringify(params));
 
+            if (controlField.value.length !== 40) {
+                return [ValidateErrors.controlFieldError("TODO:fixurl", "Kontrolfelt 008 skal have en længde på 40 tegn men var kun " + controlField.value.length)];
+            }
 
             return [];
         } finally {
