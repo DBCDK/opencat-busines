@@ -13,6 +13,10 @@ var ControlField001Validator = function () {
     function validate(record, controlField, params) {
         Log.trace("Enter -- ControlField001Validator.validate");
         try {
+            Log.info("ControlField001Validator");
+            Log.info("Control field: ", JSON.stringify(controlField));
+            Log.info("Params: ", JSON.stringify(params));
+
             return [];
         } finally {
             Log.trace("Exit -- ControlField001Validator.validate");
