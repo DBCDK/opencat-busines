@@ -74,6 +74,7 @@ var Validator = function () {
                 result = result.concat(__validateLeader(record, templateProvider))
             }
 
+            /*
             if (template.hasOwnProperty('control')) {
                 for (var c = 0; c < record.controlFields.length; c++) {
                     var controlResult = __validateControlField(record, record.controlFields[c], templateProvider);
@@ -83,7 +84,7 @@ var Validator = function () {
                     result = result.concat(controlResult);
                 }
             }
-
+*/
             if (record.fields !== undefined) {
                 isDelete = isLegalDeleteRecord(record, templateProvider, settings);
                 // Validation should only be performed if it isn't a legal delete record
