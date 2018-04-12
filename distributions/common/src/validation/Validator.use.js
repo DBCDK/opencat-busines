@@ -75,8 +75,8 @@ var Validator = function () {
             }
 
             if (template.hasOwnProperty('control')) {
-                for (var c = 0; c < record.control.length; c++) {
-                    var controlResult = __validateControlField(record, record.control[c], templateProvider);
+                for (var c = 0; c < record.controlFields.length; c++) {
+                    var controlResult = __validateControlField(record, record.controlFields[c], templateProvider);
                     for (var pos = 0; pos < controlResult.length; pos++) {
                         controlResult[pos].ordinalPositionOfField = c;
                     }
@@ -181,8 +181,8 @@ var Validator = function () {
             var templateControlField = template.control[field.name];
 
             if (templateField.rules instanceof Array) {
-                for (var i = 0; i < templateField.rules.length; i++) {
-                    var rule = templateField.rules[i];
+                for (var i = 0; i < templateControlField.rules.length; i++) {
+                    var rule = templateControlField.rules[i];
 
                     Log.debug("Exec rule [", field.name === undefined ? "field name undefined" : field.name, "]: ", rule.name === undefined ? "rule name undefined" : rule.name);
                     if (rule.name !== undefined) {
